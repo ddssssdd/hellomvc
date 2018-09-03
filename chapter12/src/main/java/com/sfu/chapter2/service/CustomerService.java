@@ -3,17 +3,11 @@ package com.sfu.chapter2.service;
 import com.sfu.chapter2.helper.DatabaseHelper;
 import com.sfu.chapter2.model.Customer;
 import com.sfu.chapter2.util.PropsUtil;
-import com.sun.media.jfxmedia.logging.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 public class CustomerService {
     private static final org.slf4j.Logger LOGGER= LoggerFactory.getLogger(PropsUtil.class);
@@ -55,10 +49,14 @@ public class CustomerService {
     }
 
     public boolean createCustomer(Map<String,Object> fieldMap){
-        return false;
+        return DatabaseHelper.insertEntity(Customer.class, fieldMap);
+    }
+
+    public boolean updateCustomer(long id ,Map<String,Object> fieldMap){
+        return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
 
     public boolean deleteCustoemr(Long id){
-        return false;
+        return DatabaseHelper.deleteEntity(Customer.class, id);
     }
 }

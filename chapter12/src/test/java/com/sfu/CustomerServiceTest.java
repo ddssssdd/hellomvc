@@ -1,4 +1,4 @@
-package com.sfu.chapter2;
+package com.sfu;
 
 import com.sfu.chapter2.model.Customer;
 import com.sfu.chapter2.service.CustomerService;
@@ -21,7 +21,7 @@ public class CustomerServiceTest {
     }
 
     @Test
-    public void getCustomerList()throws Exception{
+    public void getCustomerListInReal()throws Exception{
         List<Customer> customerList = customerService.getCustomerList("");
         Assert.assertEquals(2,customerList.size());
     }
