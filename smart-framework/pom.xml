@@ -53,9 +53,9 @@
             <version>4.0</version>
         </dependency>
         <dependency>
-            <groupId>common-dbutils</groupId>
+            <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
-
+            <version>1.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

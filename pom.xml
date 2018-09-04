@@ -13,6 +13,7 @@
     <modules>
         <module>smart-framework</module>
         <module>chapter12</module>
+        <module>chapter3</module>
     </modules>
 
 
