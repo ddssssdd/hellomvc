@@ -7,7 +7,10 @@ import com.sfu.framework.bean.View;
 import com.sfu.framework.helper.BeanHelper;
 import com.sfu.framework.helper.ConfigHelper;
 import com.sfu.framework.helper.ControllerHelper;
+import com.sfu.framework.util.CodecUtil;
+import com.sfu.framework.util.JsonUtil;
 import com.sfu.framework.util.ReflectionUtil;
+import com.sfu.framework.util.StreamUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.lf5.util.StreamUtils;
@@ -54,7 +57,7 @@ public class DispatcherServlet extends HttpServlet {
                 String paramValue = request.getParameter(paramName);
                 paramMap.put(paramName,paramValue);
             }
-            String body =  CodecUtil.decodeURL(StreamUtils.getString(request.getInputStream()));
+            String body =  CodecUtil.decodeURL(StreamUtil.getString(request.getInputStream()));
             if (StringUtils.isNotEmpty(body)){
                 String[] params = body.split("&");
                 if (ArrayUtils.isNotEmpty(params)){
@@ -92,7 +95,7 @@ public class DispatcherServlet extends HttpServlet {
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
                     PrintWriter writer = response.getWriter();
-                    String json = JsonUtils.toJson(model);
+                    String json = JsonUtil.toJson(model);
                     writer.write(json);
                     writer.flush();
                     writer.close();
