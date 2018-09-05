@@ -42,31 +42,19 @@ public class PropsUtil {
     }
 
     public static String getString(Properties props,String key,String defaultValue){
-        String value = defaultValue;
-        if (props.contains(key)){
-            value= props.getProperty(key);
-        }
-        return value;
+        return props.getProperty(key,defaultValue);
     }
 
     public static int getInt(Properties props, String key){
         return getInt(props,key,0);
     }
     public static int getInt(Properties props, String key, int defaultValue){
-        int value = defaultValue;
-        if (props.contains(key)){
-            value = Integer.parseInt(props.getProperty(key));
-        }
-        return value;
+        return Integer.parseInt(props.getProperty(key,String.valueOf(defaultValue)));
     }
     public static boolean getBoolean(Properties props, String key){
         return getBoolean(props,key,false);
     }
     public static boolean getBoolean(Properties props, String key, boolean defaultValue){
-        boolean value = defaultValue;
-        if (props.contains(key)){
-            value = props.getProperty(key).equalsIgnoreCase("true");
-        }
-        return value;
+        return props.getProperty(key,"false").equalsIgnoreCase("true");
     }
 }

@@ -15,4 +15,8 @@ public class Param {
         return paramMap;
     }
 
+    public Object[] params(){
+        return this.paramMap.values().toArray();
+    }
+
 }

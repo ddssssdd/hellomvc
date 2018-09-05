@@ -72,8 +72,9 @@ public class DispatcherServlet extends HttpServlet {
                 }
             }
             Param param = new Param(paramMap);
-            Method acctionMethod = handler.getActionMethod();
-            Object result = ReflectionUtil.invokeMethod(controllerBean, acctionMethod, param);
+            Method actionMethod = handler.getActionMethod();
+            //Object result = ReflectionUtil.invokeMethod(controllerBean, acctionMethod, param);
+            Object result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param.params());
             if (result instanceof View){
                 View view = (View)result;
                 String path = view.getPath();
@@ -89,7 +90,7 @@ public class DispatcherServlet extends HttpServlet {
                     }
                 }
             }else if (result instanceof Data){
-                Data data = (Data)request;
+                Data data = (Data)result;
                 Object model = data.getModel();
                 if (model!=null){
                     response.setContentType("application/json");
